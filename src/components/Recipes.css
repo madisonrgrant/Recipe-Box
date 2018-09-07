@@ -1,0 +1,15 @@
+.Individual {
+  display: flex;
+  flex-wrap: wrap;
+  cursor: zoom-in;
+  box-sizing: border-box;
+  border-color: black;
+  border-width: 3 px;
+}
+
+.img {
+    height: auto;
+    width: auto;
+    max-width: 300px;
+    max-height: 300px;
+}
