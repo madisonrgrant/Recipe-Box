@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Recipes from './components/Recipes';
-import Search from './components/Search';
+import NewSearch from './components/NewSearch';
 import './App.css';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -28,7 +28,7 @@ class App extends Component {
       <Header/>
       </div>
       <div class = "Body">
-      <Search/>
+      <NewSearch/>
       <Recipes/>
         {/*<Router>
           <Switch>

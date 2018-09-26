@@ -1,62 +1,44 @@
-import React, { Component } from 'react';
-import Recipes from './Recipes.js';
+
+import React, { Component } from 'react'
+import recipes from '../store.js';
 
 class Search extends Component {
-  constructor(props)  {
-  super(props)
-  this.state = {
-    value: ''
-  }
-}
-handleChange(e) {
- this.setState({value: e.target.value})
-}
 
-searchBar(value) {
-  let valueSplit = value.split("")
-  let nameSplit = this.props.recipe.name.split("")
-  let ingredientsSplit = this.props.recipe.name.split("")
-  let search
-
-
-{/*
-  valueSplit.map()
-  ingredientsSplit.map()
-  nameSplit.map()
-
-  if (valueSplit[i] === nameSplit[i] || valueSplit[i] === ingredientsSplit[i]) {
-    search = recipes.map(recipe => {
-
-    })
+  constructor(props){
+    super(props)
+    this.state = {
+      searchTerm: "",
+      recipeNames: recipes.name
+      recipeIngredients: recipes.ingredients
+    }
   }
 
-      if(recipes === "undefined") {
-        content = "No recipes found."
-      } else {
-        content = recipes.map(recipe => {
-          return (<RecipeCard recipe = {recipe}/>)
-        })
+
+  onChange = (e) => {
+    console.log(e.target.value)
+    let input = e.target.value
+    this.setState({searchTerm: input})
+    let { searchTerm } = this.state
+    e.preventDefault()
+    console.log("form submitted")
+    console.log(searchTerm)
+    let searchRecipes = recipes.filter(rec => (searchTerm == rec.name))
+    //searchTerm == rec.name || searchTerm == rec.ingredients
+    console.log(searchRecipes)
+    return searchRecipes
+  }
+
+      render() {
+        return (
+          <label>
+          <div>
+            Need to find a specific recipe?
+            </div>
+            <input type = "text" onChange={this.onChange} value={this.state.searchTerm} placeholder = "Search" />
+          </label>
+        )
       }
-
-Remember content variable*/}
-
-  } else {
-    "There are no search options for this input."
-  }
-
-}
+    }
 
 
-
-  render() {
-    return (
-      <label>
-        Search:
-        <input type = "text" value={this.state.value} onChange= {this.handleChange.bind(this)} />
-      </label>
-    )
-  }
-}
-
-
-export default Search
+export default Search;
